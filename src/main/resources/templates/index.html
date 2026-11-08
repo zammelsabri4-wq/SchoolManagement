@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolManagement - Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>🎓 SchoolManagement</h2>
+    <nav id="nav">
+        <a href="#dashboard" data-view="dashboard">📊 Dashboard</a>
+        <a href="#etudiants" data-view="etudiants">👨‍🎓 Étudiants</a>
+        <a href="#enseignants" data-view="enseignants">👩‍🏫 Enseignants</a>
+        <a href="#classes" data-view="classes">🏫 Classes</a>
+        <a href="#cours" data-view="cours">📚 Cours</a>
+        <a href="#inscriptions" data-view="inscriptions">📝 Inscriptions</a>
+        <a href="#notes" data-view="notes">🏆 Notes</a>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <header>
+        <h1 id="page-title">Dashboard</h1>
+        <p id="page-subtitle">Vue d'ensemble de la gestion scolaire</p>
+    </header>
+
+    <div id="banner" class="banner hidden"></div>
+
+    <!-- Vue Dashboard -->
+    <section id="view-dashboard">
+        <div class="cards" id="stat-cards"></div>
+
+        <div class="grid-2">
+            <div class="panel">
+                <h3>Étudiants par classe</h3>
+                <div id="chart-classes" class="bars"></div>
+            </div>
+            <div class="panel">
+                <h3>Dernières inscriptions</h3>
+                <div id="recent-inscriptions"></div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="panel">
+                <h3>Derniers étudiants</h3>
+                <div id="recent-etudiants"></div>
+            </div>
+            <div class="panel">
+                <h3>Dernières notes</h3>
+                <div id="recent-notes"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vue générique CRUD -->
+    <section id="view-entity" class="hidden">
+        <div class="toolbar">
+            <input type="search" id="search" placeholder="Rechercher...">
+            <button class="btn btn-primary" id="btn-add">+ Ajouter</button>
+        </div>
+        <div class="panel table-wrap">
+            <table id="entity-table"></table>
+        </div>
+    </section>
+</main>
+
+<dialog id="modal">
+    <form id="modal-form" method="dialog">
+        <h3 id="modal-title"></h3>
+        <div id="modal-fields"></div>
+        <div class="modal-actions">
+            <button type="button" class="btn" id="modal-cancel">Annuler</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </form>
+</dialog>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/js/dashboard.js" th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>
